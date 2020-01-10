@@ -1,7 +1,6 @@
 package com.epam.izh.rd.online.repository;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -123,16 +122,17 @@ public class SimpleFileRepository implements FileRepository {
      */
     @Override
     public boolean createFile(String path, String name) {
-        File dir = new File(path);
+        String PATH = "src/main/resources/";
+        File dir = new File(PATH, path);
         String fileName = path + "/" + (name.endsWith(".txt") ? name : name + ".txt");
-        File file = new File(fileName);
+        File file = new File(PATH, fileName);
         try {
             if (!dir.exists()) {
                 dir.mkdirs();
             }
 
             if (file.exists()) {
-                return false;
+                file.delete();
             }
 
             if (!file.createNewFile()) {

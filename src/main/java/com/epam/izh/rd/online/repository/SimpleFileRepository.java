@@ -122,7 +122,7 @@ public class SimpleFileRepository implements FileRepository {
      */
     @Override
     public boolean createFile(String path, String name) {
-        String PATH = "src/main/resources/";
+        String PATH = "target/classes/";
         File dir = new File(PATH, path);
         String fileName = path + "/" + (name.endsWith(".txt") ? name : name + ".txt");
         File file = new File(PATH, fileName);
